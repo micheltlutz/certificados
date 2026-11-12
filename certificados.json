@@ -1,33 +1,33 @@
 {
   "gerado_em": "2026-11-12",
   "resumo": {
-    "total": 86,
-    "horas_informadas_total": 4083.52,
-    "horas_cursos_eventos": 672.52,
+    "total": 92,
+    "horas_informadas_total": 4178.52,
+    "horas_cursos_eventos": 767.52,
     "horas_formacao_academica": 3411,
     "certificacoes": 16,
     "certificacoes_vigentes": 12,
     "formacoes_academicas": 3,
-    "palestras_publicacoes": 5,
-    "instituicoes_distintas": 47,
+    "palestras_publicacoes": 7,
+    "instituicoes_distintas": 50,
     "itens_sem_carga_horaria": 31,
-    "destaques": 23,
+    "destaques": 25,
     "periodo": {
       "inicio": "2011",
       "fim": "2026"
     },
     "por_tipo": {
-      "curso": 52,
+      "curso": 56,
+      "palestra": 6,
       "certificacao": 16,
       "formacao_academica": 3,
       "evento": 10,
-      "palestra": 4,
       "publicacao": 1
     },
     "por_categoria": {
       "Palestras, Eventos e Publicações": {
-        "quantidade": 15,
-        "horas": 65.0
+        "quantidade": 17,
+        "horas": 76.0
       },
       "Cloud e AWS": {
         "quantidade": 13,
@@ -37,25 +37,25 @@
         "quantidade": 13,
         "horas": 127.0
       },
+      "Desenvolvimento e Mobile": {
+        "quantidade": 11,
+        "horas": 269.0
+      },
       "Segurança da Informação": {
         "quantidade": 10,
         "horas": 68.75
       },
-      "Desenvolvimento e Mobile": {
-        "quantidade": 9,
-        "horas": 219.0
-      },
       "Dados e IA": {
+        "quantidade": 7,
+        "horas": 72.5
+      },
+      "Liderança e Soft Skills": {
         "quantidade": 6,
-        "horas": 68.5
+        "horas": 65.15
       },
       "Gestão de Projetos e Serviços": {
         "quantidade": 6,
         "horas": 60.5
-      },
-      "Liderança e Soft Skills": {
-        "quantidade": 5,
-        "horas": 35.15
       },
       "Compliance e Governança": {
         "quantidade": 5,
@@ -81,10 +81,100 @@
       "2023": 10,
       "2024": 4,
       "2025": 2,
-      "2026": 6
+      "2026": 12
     }
   },
   "certificados": [
+    {
+      "id": "fullcycle-solid-na-pratica",
+      "nome": "SOLID na Prática: Princípios e Aplicações em Design de Software (Curso Full Cycle 4.0)",
+      "instituicao": "Full Cycle",
+      "categoria": "Desenvolvimento e Mobile",
+      "tipo": "curso",
+      "carga_horaria_horas": 20,
+      "carga_horaria_status": "informado",
+      "data_emissao": "2026-10-26",
+      "data_estimada": false,
+      "validade": null,
+      "credencial_id": "cb430884-6ab2-49e6-81b5-8c4f6cafc585",
+      "destaque": false,
+      "observacao": "Módulo de 22 a 26/10/2026."
+    },
+    {
+      "id": "fullcycle-rest-niveis-maturidade",
+      "nome": "REST e Níveis de Maturidade na Prática (Curso Full Cycle 4.0)",
+      "instituicao": "Full Cycle",
+      "categoria": "Desenvolvimento e Mobile",
+      "tipo": "curso",
+      "carga_horaria_horas": 30,
+      "carga_horaria_status": "informado",
+      "data_emissao": "2026-10-20",
+      "data_estimada": false,
+      "validade": null,
+      "credencial_id": "4d752220-5a89-439c-8c99-f9f94e7e9cda",
+      "destaque": false,
+      "observacao": "Módulo de 16 a 20/10/2026."
+    },
+    {
+      "id": "strides-tech-manager-50",
+      "nome": "Tech Manager 5.0: Liderança e Gestão na Prática",
+      "instituicao": "Strides Engineering Community",
+      "categoria": "Liderança e Soft Skills",
+      "tipo": "curso",
+      "carga_horaria_horas": 30,
+      "carga_horaria_status": "informado",
+      "data_emissao": "2026-10-05",
+      "data_estimada": true,
+      "validade": null,
+      "credencial_id": null,
+      "destaque": false,
+      "observacao": "Programa Educacional Executivo em Liderança. Data pela emissão da credencial (Accredible); o certificado não imprime data."
+    },
+    {
+      "id": "asimov-fundamentos-vibe-design",
+      "nome": "Fundamentos do Vibe Design",
+      "instituicao": "Asimov Academy",
+      "categoria": "Dados e IA",
+      "tipo": "curso",
+      "carga_horaria_horas": 4,
+      "carga_horaria_status": "informado",
+      "data_emissao": "2026-07-29",
+      "data_estimada": false,
+      "validade": null,
+      "credencial_id": "3ee50d68-1c7d-4946-b3a8-7d33f92f3962",
+      "destaque": false,
+      "observacao": null
+    },
+    {
+      "id": "tdc-floripa-2026-palestrante",
+      "nome": "Palestrante - TDC 2026 Florianópolis (Trilha Software Security)",
+      "instituicao": "TDC / Globalcode",
+      "categoria": "Palestras, Eventos e Publicações",
+      "tipo": "palestra",
+      "carga_horaria_horas": 8,
+      "carga_horaria_status": "informado",
+      "data_emissao": "2026-07-23",
+      "data_estimada": false,
+      "validade": null,
+      "credencial_id": null,
+      "destaque": true,
+      "observacao": null
+    },
+    {
+      "id": "lasalle-semana-inovacao-2026-palestrante",
+      "nome": "Palestrante - Semana de Inovação e Tecnologia/Telecomptec: \"Estratégia Mobile 2026: Liderando times entre o ROI da compatibilidade e a ameaça da GenAI\"",
+      "instituicao": "Universidade La Salle",
+      "categoria": "Palestras, Eventos e Publicações",
+      "tipo": "palestra",
+      "carga_horaria_horas": 3,
+      "carga_horaria_status": "informado",
+      "data_emissao": "2026-05-11",
+      "data_estimada": false,
+      "validade": null,
+      "credencial_id": null,
+      "destaque": true,
+      "observacao": "Atestado emitido em 09/06/2026, assinado digitalmente (ICP-Brasil)."
+    },
     {
       "id": "conpej-pericia-judicial",
       "nome": "Curso de Perícia Judicial",
