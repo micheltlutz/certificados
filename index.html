@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certificados e Formação | Michel Anderson Lütz Teixeira</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ml-creative-hub — tokens.css (AUTORADO; origem interna dark-nativa, ver README.md).
+   Esta é a ÚNICA fonte de valores do DS: catalog/ml-creative-hub/ds.json é extraído
+   daqui (invariante 1, origem interna). Valor errado se corrige neste arquivo e se re-extrai.
+
+   Origem: o template Webflow "Ridgen" (comprado pelo dono do exo-ds-maker), catalogado aqui
+   sob o nome do próprio negócio — ver UPSTREAM.md para a proveniência e a licença do template.
+
+   O upstream (upstream/manual/ridgen.webflow.shared.css) é dark-nativo: o :root dele já é o
+   tema escuro (166 custom properties do painel "Variables" do Webflow). Por isso o claro foi
+   derivado (theme-derive --direction light --strategy ink) e o escuro abaixo é a cópia dos
+   valores nativos (theme.default: "dark" na receita, docs/08 §3b).
+
+   Proveniência por linha:
+     - sem comentário, no :root: tipografia, espaçamento, raio e paleta compartilhada —
+       cópia idêntica do :root do upstream (valem nos dois temas, como em qualquer conversão
+       dark-nativa: só a cor por papel muda de tema);
+     - `derivado`, no :root: papel de cor calculado por theme-derive a partir do nativo;
+     - `nativo`, no [data-theme="dark"]: valor do :root do upstream, sem alteração;
+     - `autorado: …`: decidido nesta conversão (medido com exo.py contrast).
+
+   --neutral-700/800/900 (sem o prefixo --_colors---) são uma exceção do próprio upstream:
+   usados uma vez cada (value-card-body), com valores claros mesmo no tema nativo escuro —
+   um painel pontual mais claro em volta de um card. Preservados como vêm; não são papel.
+*/
+
+:root {
+  /* tipografia — igual nos dois temas. Nomes próprios para a escala: o upstream nomeia
+     --_size---<passo>--font-size/-weight/-letter-spacing/-line-height/-family (5 propriedades
+     por passo, sem um nome-base só para o tamanho), e o exo espera o tamanho na própria var
+     e --line-height/--font-weight/--letter-spacing como sufixo do mesmo nome — por isso os
+     passos ganham nome novo aqui em vez de copiar os 5 --_size---* por passo (os valores são
+     os mesmos do upstream.css:299-308, só a forma muda). lineHeight vira razão (145% → 1.45,
+     o DTCG não aceita "%"); letterSpacing en em (h1–h6) vira px pelo tamanho do próprio passo
+     (ex.: h1 -.05em × 60px = -3px, o DTCG só aceita px/rem) — os demais passos já usam px. */
+  --mch-font-sans: "Be Vietnam Pro", sans-serif; /* autorado: única família da escala (o upstream chama de "heading-font" mas usa em tudo); Newsreader é um acento de uma linha só (.footer-tape-item), fora da escala — ver notes da receita */
+  --mch-text-body: 18px; /* autorado: typography.scale.body — body {} (p1--body) */
+  --mch-text-body--line-height: 1.45;
+  --mch-text-body--font-weight: 300;
+  --mch-text-body--letter-spacing: -.32px;
+  --mch-text-body-secondary: 16px; /* autorado: p2--body */
+  --mch-text-body-secondary--line-height: 1.45;
+  --mch-text-body-secondary--font-weight: 400;
+  --mch-text-body-secondary--letter-spacing: -.32px;
+  --mch-text-body-small: 14px; /* autorado: p3--body-small */
+  --mch-text-body-small--line-height: 1.45;
+  --mch-text-body-small--font-weight: 400;
+  --mch-text-body-small--letter-spacing: -.32px;
+  --mch-text-h1: 60px;
+  --mch-text-h1--line-height: 1;
+  --mch-text-h1--font-weight: 600;
+  --mch-text-h1--letter-spacing: -3px; /* autorado: -.05em × 60px */
+  --mch-text-h2: 48px;
+  --mch-text-h2--line-height: 1.1;
+  --mch-text-h2--font-weight: 600;
+  --mch-text-h2--letter-spacing: -2.4px; /* autorado: -.05em × 48px */
+  --mch-text-h3: 40px;
+  --mch-text-h3--line-height: 1;
+  --mch-text-h3--font-weight: 600;
+  --mch-text-h3--letter-spacing: -2px; /* autorado: -.05em × 40px */
+  --mch-text-h4: 32px;
+  --mch-text-h4--line-height: 1.28;
+  --mch-text-h4--font-weight: 600;
+  --mch-text-h4--letter-spacing: -.96px; /* autorado: -.03em × 32px */
+  --mch-text-h5: 24px;
+  --mch-text-h5--line-height: 1.1;
+  --mch-text-h5--font-weight: 600;
+  --mch-text-h5--letter-spacing: -1.2px; /* autorado: -.05em × 24px */
+  --mch-text-h6: 20px;
+  --mch-text-h6--line-height: 1.25;
+  --mch-text-h6--font-weight: 500;
+  --mch-text-h6--letter-spacing: -.8px; /* autorado: -.04em × 20px */
+  --mch-text-button: 16px;
+  --mch-text-button--line-height: 1;
+  --mch-text-button--font-weight: 500;
+  --mch-text-button--letter-spacing: -.32px;
+  --mch-text-caption: 32px; /* autorado: "caption" no upstream é um número grande de destaque, não letra miúda — nome preservado */
+  --mch-text-caption--line-height: 1.18;
+  --mch-text-caption--font-weight: 400;
+  --mch-text-caption--letter-spacing: -.64px;
+  --mch-text-label: 16px;
+  --mch-text-label--line-height: 1.45;
+  --mch-text-label--font-weight: 400;
+  --mch-text-label--letter-spacing: -.32px;
+  --mch-text-link: 16px;
+  --mch-text-link--line-height: 1;
+  --mch-text-link--font-weight: 400;
+  --mch-text-link--letter-spacing: -.48px;
+
+  /* espaçamento e raio — iguais nos dois temas */
+  --_spacing---container-width: 1126px;
+  --_spacing---section-padding-left-or-right: 20px;
+  --_spacing---space-10: 10px;
+  --_spacing---space-100: 100px;
+  --_spacing---space-12: 12px;
+  --_spacing---space-120: 120px;
+  --_spacing---space-14: 14px;
+  --_spacing---space-15: 15px;
+  --_spacing---space-150: 150px;
+  --_spacing---space-16: 16px;
+  --_spacing---space-160: 160px;
+  --_spacing---space-17: 17px;
+  --_spacing---space-18: 18px;
+  --_spacing---space-19: 19px;
+  --_spacing---space-20: 20px;
+  --_spacing---space-200: 200px;
+  --_spacing---space-22: 22px;
+  --_spacing---space-24: 24px;
+  --_spacing---space-25: 25px;
+  --_spacing---space-28: 28px;
+  --_spacing---space-30: 30px;
+  --_spacing---space-32: 32px;
+  --_spacing---space-4: 4px;
+  --_spacing---space-40: 40px;
+  --_spacing---space-48: 48px;
+  --_spacing---space-56: 56px;
+  --_spacing---space-6: 6px;
+  --_spacing---space-64: 64px;
+  --_spacing---space-8: 8px;
+  --_spacing---space-80: 80px;
+  --_spacing---spacing-extra-light: 5px;
+  --_spacing---spacing-item-padding-three-xl: 10px;
+  --_spacing---spacing-item-padding-two-xl: 15px;
+  --_spacing---spacing-light: 6px;
+  --_spacing---spacing-medium-rare: 24px;
+  --_spacing---spacing-zero: 0px;
+  --_radius---radius-large: 20px;
+  --_radius---radius-medium: 16px;
+  --_radius---radius-pill: 100px;
+  --_radius---radius-small: 10px;
+  --_radius---radius-xlarge: 24px;
+
+  /* movimento — iguais nos dois temas (motion-draft; os 4 componentes abaixo são os únicos
+     confirmados em uso nas páginas baixadas — .w-lightbox-control, .w-slider-dot e o spin do
+     @keyframes são framework Webflow não usado neste template, cortados como ruído) */
+  --mch-duration-base: 300ms; /* autorado: motion-draft — 3 uso(s) (.footer-form-button, .nav-dropdown-toggle, .nav-dropdown-link) */
+  --mch-duration-slow: 500ms; /* autorado: motion-draft — 1 uso (.nav-text) */
+  --mch-ease-custom: cubic-bezier(.645, .045, .355, 1); /* autorado: motion-draft — 1 uso (.nav-text) */
+
+  /* paleta compartilhada — iguais nos dois temas (inclui as camadas de transparência do glass do hero) */
+  --_colors---dark-alpha-10: #0e0f111a;
+  --_colors---dark-alpha-14: #0e0f1124;
+  --_colors---dark-alpha-5: #0e0f110d;
+  --_colors---dark-alpha-50: #0e0f1180;
+  --_colors---dark-alpha-6: #0e0f110f;
+  --_colors---light-alpha-10: #f5f6f11a;
+  --_colors---light-alpha-24: #f5f6f13d;
+  --_colors---light-alpha-5: #f5f6f10d;
+  --_colors---light-alpha-6: #f5f6f10f;
+  --_colors---light-alpha-75: #f5f6f1bf;
+  --_colors---light-alpha-8: #f5f6f114;
+  --_colors---light-alpha-90: #f5f6f1e6;
+  --_colors---neutral-100: white;
+  --_colors---neutral-600: #565d65;
+  --_colors---neutral-900: #090a0b;
+  --_colors---transparent: transparent;
+  --white-alpha-100: #ffffff17;
+  --white-alpha-200: #ffffff1a;
+  --white-alpha-300: #ffffff1f;
+  --white-alpha-400: #ffffff2b;
+  --white-alpha-500: #ffffff82;
+
+  /* painel claro pontual do upstream (ver nota acima) */
+  --neutral-700: #6f7781;
+  --neutral-800: #d5e3e6;
+  --neutral-900: #d9dccb;
+
+  /* papéis de cor — claro (derivado) */
+  --_colors---neutral-800: #f5f6f1; /* derivado: color.semantic.bg.canvas — theme-derive ink, teto de L 0,985 */
+  --_colors---neutral-700: #eceee5; /* derivado: color.semantic.bg.surface — theme-derive ink, 4 pontos de L abaixo da canvas */
+  --_colors---neutral-200: #1e2025; /* derivado: color.semantic.text.primary — theme-derive ink, 13,9:1 sobre a canvas */
+  --_colors---neutral-400: #4d4f52; /* derivado: color.semantic.text.secondary — theme-derive ink, 7,0:1 sobre a canvas */
+  --_colors---neutral-500: #696b6c; /* derivado: color.semantic.text.muted — theme-derive ink, 4,6:1 sobre a canvas */
+  --_colors---light-alpha-12: #1e202529; /* derivado: color.semantic.border.subtle — theme-derive ink */
+  --_colors---primary-500: #6c891c; /* derivado: color.semantic.brand.primary — theme-derive ink, passo 500 da rampa (3,70:1 sobre a canvas); ⚠ a marca muda de passo entre os temas (confira com o olho, docs/08 §5) */
+  --_colors---primary-500-ink: #5a701d; /* derivado: var nova — passo 600 da rampa, 4,8:1 sobre a canvas, para texto/ícone sobre fundo claro que precise de mais contraste que o brand.primary */
+  --mch-text-on-brand: #ffffff; /* autorado: color.semantic.text.on-brand — texto sobre o botão de marca no claro: 4,01:1 (abaixo de 4,5, texto de botão não é "grande"; aceito como no upstream, exo.note) */
+  --mch-status-danger: #b3261e; /* autorado: color.semantic.status.danger — equivalente claro do vermelho nativo (--ff9a9a reprova 1,87:1 no claro); 6,02:1 sobre a canvas */
+  --mch-status-warning: #8a5a14; /* autorado: color.semantic.status.warning — o template não tem aviso; âmbar na mesma família do danger: 5,44:1 sobre a canvas claro, 5,05:1 sobre a superfície clara */
+}
+
+[data-theme="dark"] {
+  --_colors---neutral-800: #0e0f11; /* nativo: color.semantic.bg.canvas — body (ridgen.webflow.shared.css) */
+  --_colors---neutral-700: #1e2025; /* nativo: color.semantic.bg.surface — .project-card */
+  --_colors---neutral-200: #f5f6f1; /* nativo: color.semantic.text.primary */
+  --_colors---neutral-400: #b1b1b1; /* nativo: color.semantic.text.secondary */
+  --_colors---neutral-500: #696a6c; /* nativo: color.semantic.text.muted */
+  --_colors---light-alpha-12: #f5f6f11f; /* nativo: color.semantic.border.subtle */
+  --_colors---primary-500: #bceb3b; /* nativo: color.semantic.brand.primary */
+  --_colors---primary-500-ink: #bceb3b; /* var nova — no escuro, o passo 200 já tem 11,7:1; sem um passo mais forte a oferecer */
+  --mch-text-on-brand: #0e0f11; /* nativo: color.semantic.text.on-brand — .theme-button-pill, .contact-submit, .footer-form-button: 13,77:1 */
+  --mch-status-danger: #ff9a9a; /* nativo: color.semantic.status.danger — .footer-form-error: 9,44:1 */
+  --mch-status-warning: #e8a33d; /* autorado: color.semantic.status.warning — o template não tem aviso; âmbar na mesma família do danger: 8,89:1 sobre a canvas escura, 7,56:1 sobre a superfície escura */
+}
+
+
+:root, [data-theme="dark"] {
+  --bg: var(--_colors---neutral-800); --bg-card: var(--_colors---neutral-700); --borda: var(--_colors---light-alpha-12);
+  --texto: var(--_colors---neutral-200); --texto-suave: var(--_colors---neutral-400); --texto-mudo: var(--_colors---neutral-500);
+  --marca: var(--_colors---primary-500); --marca-texto: var(--_colors---primary-500-ink); --sobre-marca: var(--mch-text-on-brand);
+  --erro: var(--mch-status-danger); --raio: var(--_radius---radius-large); --raio-medio: var(--_radius---radius-medium);
+  --transicao: var(--mch-duration-base) var(--mch-ease-custom);
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--mch-font-sans); background: var(--bg); color: var(--texto);
+  font-size: var(--mch-text-body-secondary); font-weight: var(--mch-text-body-secondary--font-weight);
+  line-height: var(--mch-text-body-secondary--line-height); letter-spacing: var(--mch-text-body-secondary--letter-spacing);
+  -webkit-font-smoothing: antialiased; }
+a { color: var(--marca-texto); }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.container { max-width: var(--_spacing---container-width); margin: 0 auto; padding: 0 var(--_spacing---section-padding-left-or-right); }
+section { padding: var(--_spacing---space-80) 0 0; }
+h2 { font-size: var(--mch-text-h4); font-weight: var(--mch-text-h4--font-weight); line-height: var(--mch-text-h4--line-height);
+  letter-spacing: var(--mch-text-h4--letter-spacing); margin: 0 0 var(--_spacing---space-8); }
+.sub { color: var(--texto-suave); margin: 0 0 var(--_spacing---space-32); }
+.rotulo-secao { display: inline-flex; align-items: center; gap: 8px; color: var(--marca-texto); font-size: var(--mch-text-body-small);
+  font-weight: 500; margin-bottom: var(--_spacing---space-12); }
+.rotulo-secao::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--marca); }
+
+.hero { padding: var(--_spacing---space-80) 0 var(--_spacing---space-56); position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -220px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--marca) 22%, transparent), transparent 65%); pointer-events: none; }
+.hero h1 { font-size: clamp(40px, 6vw, var(--mch-text-h1)); font-weight: var(--mch-text-h1--font-weight); line-height: var(--mch-text-h1--line-height);
+  letter-spacing: var(--mch-text-h1--letter-spacing); margin: 0; max-width: 820px; }
+.hero h1 em { font-style: normal; color: var(--marca-texto); }
+.hero p { margin: var(--_spacing---space-20) 0 0; color: var(--texto-suave); font-size: var(--mch-text-body); font-weight: var(--mch-text-body--font-weight); max-width: 640px; }
+.topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; position: relative; z-index: 1; }
+.btn-tema { font: inherit; font-size: var(--mch-text-button); font-weight: var(--mch-text-button--font-weight); line-height: 1;
+  background: transparent; color: var(--texto); border: 1px solid var(--borda); border-radius: var(--_radius---radius-pill);
+  padding: 12px 18px; cursor: pointer; white-space: nowrap; transition: background var(--transicao), color var(--transicao), border-color var(--transicao); }
+.btn-tema:hover { background: var(--marca); color: var(--sobre-marca); border-color: var(--marca); }
+
+.big-numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--_spacing---space-16); }
+@media (max-width: 900px) { .big-numbers { grid-template-columns: repeat(2, 1fr); } }
+.bn { background: var(--bg-card); border: 1px solid var(--borda); border-radius: var(--raio); padding: var(--_spacing---space-24); }
+.bn .valor { font-size: var(--mch-text-h2); font-weight: var(--mch-text-h2--font-weight); line-height: var(--mch-text-h2--line-height);
+  letter-spacing: var(--mch-text-h2--letter-spacing); color: var(--texto); }
+.bn.principal { background: var(--marca); border-color: var(--marca); color: var(--sobre-marca); grid-column: span 2; }
+.bn.principal .valor { color: var(--sobre-marca); font-size: var(--mch-text-h1); letter-spacing: var(--mch-text-h1--letter-spacing); }
+.bn .rotulo { font-weight: 500; margin-top: var(--_spacing---space-8); }
+.bn .detalhe { color: var(--texto-mudo); font-size: var(--mch-text-body-small); margin-top: 2px; }
+.bn.principal .detalhe { color: var(--sobre-marca); opacity: .75; }
+@media (max-width: 560px) { .big-numbers { grid-template-columns: 1fr; } .bn.principal { grid-column: span 1; } }
+
+.destaques { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: var(--_spacing---space-16); }
+.card-dest { background: var(--bg-card); border: 1px solid var(--borda); border-radius: var(--raio); padding: var(--_spacing---space-24);
+  display: flex; flex-direction: column; gap: var(--_spacing---space-8); align-items: flex-start; transition: border-color var(--transicao), transform var(--transicao); }
+.card-dest:hover { border-color: var(--marca); transform: translateY(-2px); }
+.card-dest .nome { font-size: var(--mch-text-h6); font-weight: var(--mch-text-h6--font-weight); line-height: var(--mch-text-h6--line-height);
+  letter-spacing: var(--mch-text-h6--letter-spacing); }
+.card-dest .inst { color: var(--texto-suave); font-size: var(--mch-text-body-small); }
+.card-dest .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: var(--_spacing---space-8); }
+
+.chip { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 500; letter-spacing: 0; padding: 5px 10px;
+  border-radius: var(--_radius---radius-pill); border: 1px solid var(--borda); color: var(--texto-suave); white-space: nowrap; }
+.chip.marca { color: var(--marca-texto); border-color: color-mix(in srgb, var(--marca) 45%, transparent); }
+.chip.ok { color: var(--marca-texto); background: color-mix(in srgb, var(--marca) 12%, transparent); border-color: transparent; }
+.chip.exp { color: var(--erro); background: color-mix(in srgb, var(--erro) 12%, transparent); border-color: transparent; }
+.chip.horas { color: var(--sobre-marca); background: var(--marca); border-color: var(--marca); }
+.chip.neutro { color: var(--texto-mudo); }
+
+.paineis { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--_spacing---space-16); }
+@media (max-width: 900px) { .paineis { grid-template-columns: 1fr; } }
+.painel { min-width: 0; background: var(--bg-card); border: 1px solid var(--borda); border-radius: var(--raio); padding: var(--_spacing---space-24); }
+.painel h3 { margin: 0 0 var(--_spacing---space-20); font-size: var(--mch-text-h6); font-weight: var(--mch-text-h6--font-weight); letter-spacing: var(--mch-text-h6--letter-spacing); }
+.barra-linha { display: grid; grid-template-columns: 210px 1fr auto; gap: 12px; align-items: center; margin-bottom: 12px;
+  font-size: var(--mch-text-body-small); cursor: pointer; border-radius: 8px; transition: color var(--transicao); }
+.barra-linha:hover { color: var(--marca-texto); }
+@media (max-width: 640px) { .barra-linha { grid-template-columns: 1fr auto; } .barra-linha .trilho { grid-column: 1 / -1; } }
+.trilho { background: var(--borda); border-radius: var(--_radius---radius-pill); height: 8px; overflow: hidden; }
+.preenchimento { height: 100%; border-radius: var(--_radius---radius-pill); background: var(--marca); }
+.barra-linha .num { color: var(--texto-mudo); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.timeline { display: flex; align-items: flex-end; gap: 8px; height: 210px; padding-top: 24px; }
+.ano { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 6px; min-width: 0; }
+.ano .col { width: 100%; max-width: 34px; border-radius: 10px 10px 4px 4px; background: var(--marca); position: relative; min-height: 4px; }
+.ano .col span { position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 12px; font-weight: 600; color: var(--texto); }
+.ano .lbl { font-size: 11px; color: var(--texto-mudo); }
+
+.filtros { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--_spacing---space-16); }
+.filtros input, .filtros select { font: inherit; padding: 12px 18px; border-radius: var(--_radius---radius-pill); border: 1px solid var(--borda);
+  background: var(--bg-card); color: var(--texto); outline: none; transition: border-color var(--transicao); }
+.filtros input:focus, .filtros select:focus { border-color: var(--marca); }
+.filtros input { flex: 1 1 260px; }
+.contador { color: var(--texto-mudo); font-size: var(--mch-text-body-small); margin-bottom: var(--_spacing---space-12); }
+.lista { display: flex; flex-direction: column; gap: 10px; padding-bottom: var(--_spacing---space-56); }
+.item { background: var(--bg-card); border: 1px solid var(--borda); border-radius: var(--raio-medio); padding: var(--_spacing---space-20) var(--_spacing---space-24); }
+.item-topo { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.item .nome { font-weight: 600; letter-spacing: -.32px; }
+.item .inst { color: var(--texto-suave); font-size: var(--mch-text-body-small); }
+.item .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--_spacing---space-12); }
+.item .obs { font-size: var(--mch-text-body-small); color: var(--texto-mudo); margin-top: var(--_spacing---space-8); }
+.caminho { display: flex; gap: 8px; align-items: center; margin-top: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px; letter-spacing: 0; background: var(--bg); border-radius: var(--_radius---radius-small); padding: 8px 10px; }
+.caminho a { flex: 1; word-break: break-all; text-decoration: none; }
+.caminho a:hover { text-decoration: underline; }
+.btn-copiar { font-family: var(--mch-font-sans); font-size: 12px; border: 1px solid var(--borda); background: transparent;
+  color: var(--texto); border-radius: var(--_radius---radius-pill); padding: 5px 12px; cursor: pointer; white-space: nowrap; }
+.btn-copiar:hover { background: var(--marca); color: var(--sobre-marca); border-color: var(--marca); }
+details { margin-top: 6px; font-size: var(--mch-text-body-small); color: var(--texto-suave); }
+summary { cursor: pointer; }
+footer { color: var(--texto-mudo); font-size: var(--mch-text-body-small); padding: var(--_spacing---space-24) 0 var(--_spacing---space-40);
+  border-top: 1px solid var(--borda); word-break: break-all; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="container topo">
+    <div>
+      <div class="rotulo-secao">Certificados e formação</div>
+      <h1>Michel Anderson Lütz Teixeira, <em>aprendizado contínuo</em> comprovado.</h1>
+      <p>Certificações internacionais, formação acadêmica, cursos e palestras reunidos em um só lugar.</p>
+    </div>
+    <button class="btn-tema" id="btnTema" type="button">Alternar tema</button>
+  </div>
+</header>
+
+<main class="container">
+  <div class="big-numbers" id="big-numbers"></div>
+
+  <section id="destaques">
+    <div class="rotulo-secao">Destaques</div>
+    <h2>O que mais pesa no currículo</h2>
+    <p class="sub">Certificações internacionais, formação acadêmica e participações como palestrante.</p>
+    <div class="destaques" id="lista-destaques"></div>
+  </section>
+
+  <section id="distribuicao">
+    <div class="rotulo-secao">Distribuição</div>
+    <h2>Por área e ao longo do tempo</h2>
+    <p class="sub">Quantidade e carga horária por área. Clique numa categoria para filtrar a lista.</p>
+    <div class="paineis">
+      <div class="painel"><h3>Por categoria</h3><div id="barras-categoria"></div></div>
+      <div class="painel"><h3>Linha do tempo (certificados por ano)</h3><div class="timeline" id="timeline"></div></div>
+    </div>
+  </section>
+
+  <section id="todos">
+    <div class="rotulo-secao">Catálogo</div>
+    <h2>Todos os certificados</h2>
+    <p class="sub">Lista completa com carga horária, data e código de verificação.</p>
+    <div class="filtros">
+      <input id="busca" type="search" placeholder="Buscar por nome, instituição ou credencial">
+      <select id="filtroCategoria"><option value="">Todas as categorias</option></select>
+      <select id="filtroTipo"><option value="">Todos os tipos</option></select>
+      <select id="ordem">
+        <option value="data">Mais recentes</option>
+        <option value="horas">Maior carga horária</option>
+        <option value="nome">Nome (A-Z)</option>
+      </select>
+    </div>
+    <div class="contador" id="contador"></div>
+    <div class="lista" id="lista"></div>
+  </section>
+
+  <footer id="rodape"></footer>
+</main>
+
+<script>
+const { dados, ordemTipo, rotuloTipo, publico } = {"dados": {"gerado_em": "2026-11-12", "resumo": {"total": 86, "horas_informadas_total": 4083.52, "horas_cursos_eventos": 672.52, "horas_formacao_academica": 3411, "certificacoes": 16, "certificacoes_vigentes": 12, "formacoes_academicas": 3, "palestras_publicacoes": 5, "instituicoes_distintas": 47, "itens_sem_carga_horaria": 31, "destaques": 23, "periodo": {"inicio": "2011", "fim": "2026"}, "por_tipo": {"curso": 52, "certificacao": 16, "formacao_academica": 3, "evento": 10, "palestra": 4, "publicacao": 1}, "por_categoria": {"Palestras, Eventos e Publicações": {"quantidade": 15, "horas": 65.0}, "Cloud e AWS": {"quantidade": 13, "horas": 5.12}, "Agilidade e Produto": {"quantidade": 13, "horas": 127.0}, "Segurança da Informação": {"quantidade": 10, "horas": 68.75}, "Desenvolvimento e Mobile": {"quantidade": 9, "horas": 219.0}, "Dados e IA": {"quantidade": 6, "horas": 68.5}, "Gestão de Projetos e Serviços": {"quantidade": 6, "horas": 60.5}, "Liderança e Soft Skills": {"quantidade": 5, "horas": 35.15}, "Compliance e Governança": {"quantidade": 5, "horas": 2.5}, "Formação Acadêmica": {"quantidade": 3, "horas": 3411.0}, "Perícia Judicial": {"quantidade": 1, "horas": 21.0}}, "por_ano": {"2011": 2, "2014": 1, "2016": 1, "2018": 9, "2019": 2, "2021": 35, "2022": 14, "2023": 10, "2024": 4, "2025": 2, "2026": 6}}, "certificados": [{"id": "conpej-pericia-judicial", "nome": "Curso de Perícia Judicial", "instituicao": "CONPEJ - Conselho Nacional dos Peritos Judiciais", "categoria": "Perícia Judicial", "tipo": "curso", "carga_horaria_horas": 21, "carga_horaria_status": "informado", "data_emissao": "2026-03-02", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Curso de 23 a 26/01/2026."}, {"id": "desec-intro-pentest", "nome": "Introdução ao Pentest na Prática", "instituicao": "Desec Security", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 2, "carga_horaria_status": "informado", "data_emissao": "2026-02-12", "data_estimada": false, "validade": null, "credencial_id": "LXYI-QXNPG-CUCH", "destaque": false, "observacao": null}, {"id": "anthropic-claude-code-in-action", "nome": "Claude Code in Action", "instituicao": "Anthropic", "categoria": "Dados e IA", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2026-02-11", "data_estimada": false, "validade": null, "credencial_id": "wy3d8xuu3x77", "destaque": false, "observacao": null}, {"id": "mhl-ios-app-security", "nome": "iOS Application Security Fundamentals", "instituicao": "Mobile Hacking Lab", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2026-01-08", "data_estimada": false, "validade": null, "credencial_id": "695f066b77a75b0fd907d993", "destaque": false, "observacao": null}, {"id": "mhl-android-app-security", "nome": "Android Application Security Fundamentals", "instituicao": "Mobile Hacking Lab", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2026-01-08", "data_estimada": false, "validade": null, "credencial_id": "695fcfc555f3ab0b660fee3f", "destaque": false, "observacao": null}, {"id": "apple-ads-certificacao", "nome": "Certificação Apple Ads", "instituicao": "Apple", "categoria": "Desenvolvimento e Mobile", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2026-01-01", "data_estimada": true, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Certificado informa apenas \"Classe de 2026\"."}, {"id": "gohacking-ehios", "nome": "Ethical Hacking iOS Mobile Application Pentesting (EHIOS)", "instituicao": "GoHacking", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 40, "carga_horaria_status": "informado", "data_emissao": "2025-12-02", "data_estimada": false, "validade": null, "credencial_id": "eeBU236WHcv56VEgjcZM", "destaque": true, "observacao": "Período de 04/11 a 02/12/2025."}, {"id": "aws-partner-agentic-ai-essentials", "nome": "AWS Partner: Agentic AI Essentials - Training Badge", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2025-10-08", "data_estimada": false, "validade": null, "credencial_id": "credly.com/go/9JJ818rh", "destaque": false, "observacao": null}, {"id": "aws-solutions-architect-associate", "nome": "AWS Certified Solutions Architect - Associate", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2024-10-28", "data_estimada": false, "validade": "2027-10-28", "credencial_id": "218925569fc64f839d1c1eafe4024308", "destaque": true, "observacao": null}, {"id": "aws-ai-practitioner", "nome": "AWS Certified AI Practitioner", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2024-10-07", "data_estimada": false, "validade": "2027-10-07", "credencial_id": "d14a3673574a4e58b50fc082b207ea1f", "destaque": true, "observacao": "Early Adopter."}, {"id": "pmi-capm", "nome": "Certified Associate in Project Management (CAPM)", "instituicao": "Project Management Institute (PMI)", "categoria": "Gestão de Projetos e Serviços", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2024-09-01", "data_estimada": false, "validade": "2027-09-01", "credencial_id": "3915502", "destaque": true, "observacao": null}, {"id": "mba-bi-marketing-data-driven", "nome": "MBA em BI, Marketing Digital e Estratégia Data Driven", "instituicao": "PUCRS - Escola de Negócios", "categoria": "Formação Acadêmica", "tipo": "formacao_academica", "carga_horaria_horas": 364, "carga_horaria_status": "informado", "data_emissao": "2024-07-22", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Período 01/05/2023 a 26/06/2024. TCC sobre cultura data driven no desenvolvimento de software: estudo de caso da Spotify (grau 9,7)."}, {"id": "pmirs-summit-2023", "nome": "PMIRS Summit 2023 - Da Conexão à Cultura", "instituicao": "PMI - Capítulo Rio Grande do Sul", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2023-10-07", "data_estimada": false, "validade": null, "credencial_id": "PDU C245X73098", "destaque": false, "observacao": "Evento das 8h às 18h (horário, não carga horária declarada)."}, {"id": "pmi-preparatorio-capm", "nome": "Preparatório para Certificação PMI-CAPM", "instituicao": "PMI - Capítulo São Paulo", "categoria": "Gestão de Projetos e Serviços", "tipo": "curso", "carga_horaria_horas": 52, "carga_horaria_status": "informado", "data_emissao": "2023-09-19", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "conquer-formacao-lideranca", "nome": "Formação em Liderança", "instituicao": "Conquer Business School", "categoria": "Liderança e Soft Skills", "tipo": "curso", "carga_horaria_horas": 10, "carga_horaria_status": "informado", "data_emissao": "2023-09-11", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "pucrs-extensao-tecnologia-dados-ciber", "nome": "Certificação Adicional em Tecnologia, Ciência de Dados e Cybersecurity (extensão)", "instituicao": "PUCRS - Escola Politécnica", "categoria": "Dados e IA", "tipo": "curso", "carga_horaria_horas": 50, "carga_horaria_status": "informado", "data_emissao": "2023-09-01", "data_estimada": false, "validade": null, "credencial_id": "210553-19-1", "destaque": false, "observacao": null}, {"id": "pmi-privacy-for-projects", "nome": "Privacy for Projects: privacidade e proteção de dados na gestão de projetos", "instituicao": "PMI - Capítulo Rio Grande do Sul", "categoria": "Gestão de Projetos e Serviços", "tipo": "curso", "carga_horaria_horas": 2.5, "carga_horaria_status": "informado", "data_emissao": "2023-08-16", "data_estimada": false, "validade": null, "credencial_id": "PDU C2861D6Q10", "destaque": false, "observacao": null}, {"id": "pmi-fundamentos-predictive", "nome": "Fundamentos do Gerenciamento de Projetos Predictive", "instituicao": "Project Management Institute (PMI)", "categoria": "Gestão de Projetos e Serviços", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2023-08-11", "data_estimada": false, "validade": null, "credencial_id": "credly.com/go/bD1IqQuB", "destaque": false, "observacao": null}, {"id": "compass-ai-assisted-professional", "nome": "AI-Assisted Certified Professional", "instituicao": "Compass UOL", "categoria": "Dados e IA", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2023-07-10", "data_estimada": false, "validade": "2024-07-10", "credencial_id": null, "destaque": false, "observacao": null}, {"id": "aws-partner-data-analytics", "nome": "AWS Partner: Data Analytics on AWS (Technical)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2023-05-11", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Duração informada: 1 dia (presencial)."}, {"id": "asimov-matplotlib", "nome": "Visualizando Dados com Matplotlib", "instituicao": "Asimov Academy", "categoria": "Dados e IA", "tipo": "curso", "carga_horaria_horas": 1.5, "carga_horaria_status": "informado", "data_emissao": "2023-04-25", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "asimov-pandas-sql", "nome": "Analisando Dados com Pandas & SQL", "instituicao": "Asimov Academy", "categoria": "Dados e IA", "tipo": "curso", "carga_horaria_horas": 5, "carga_horaria_status": "informado", "data_emissao": "2023-04-23", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "itil-4-foundation", "nome": "ITIL 4 Foundation Certificate in IT Service Management", "instituicao": "PeopleCert / AXELOS", "categoria": "Gestão de Projetos e Serviços", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2022-12-31", "data_estimada": false, "validade": null, "credencial_id": "GR671471491MT", "destaque": true, "observacao": null}, {"id": "ufrn-pai-presente", "nome": "Pai Presente: Cuidado e Compromisso", "instituicao": "UFRN / Ministério da Saúde (AVASUS)", "categoria": "Liderança e Soft Skills", "tipo": "curso", "carga_horaria_horas": 12, "carga_horaria_status": "informado", "data_emissao": "2022-11-20", "data_estimada": false, "validade": null, "credencial_id": "O5GPXUTL2A", "destaque": false, "observacao": null}, {"id": "devops-experience-2022", "nome": "DevOps Experience", "instituicao": "DevOps Heroes", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 8, "carga_horaria_status": "informado", "data_emissao": "2022-10-27", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "mba-ai-data-science-big-data", "nome": "MBA em Tecnologia para Negócios: AI, Data Science e Big Data", "instituicao": "PUCRS - Escola de Negócios", "categoria": "Formação Acadêmica", "tipo": "formacao_academica", "carga_horaria_horas": 363, "carga_horaria_status": "informado", "data_emissao": "2022-10-10", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Período 28/05/2021 a 17/08/2022. TCC: Acelerador Digital com Visão Computacional (grau 9,3)."}, {"id": "aws-well-architected-badge", "nome": "AWS Well-Architected Badge", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2022-10-04", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "aws-partnercast-saa-elb", "nome": "AWS PartnerCast FastTrack SAA: Elastic Load Balancing e EC2 Auto Scaling (vídeo 07)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": 1.12, "carga_horaria_status": "informado", "data_emissao": "2022-10-03", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Duração informada: 1h07min."}, {"id": "aws-partnercast-saa-sqs-sns", "nome": "AWS PartnerCast FastTrack SAA: Amazon SQS e Amazon SNS (vídeo 09)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2022-10-03", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "aws-partner-migrating", "nome": "AWS Partner: Migrating Your Application to AWS (Technical)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": 4, "carga_horaria_status": "informado", "data_emissao": "2022-09-19", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "aws-partner-accreditation-technical", "nome": "AWS Partner: Accreditation (Technical)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2022-07-07", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "aws-partner-cloud-economics", "nome": "AWS Partner: Cloud Economics Accreditation", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2022-07-05", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "aws-partner-accreditation-business", "nome": "AWS Partner: Accreditation (Business)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2022-07-04", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "idesp-ethical-hacking-foundation", "nome": "Ethical Hacking Foundation (preparatório)", "instituicao": "IDESP / Daryus", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 16, "carga_horaria_status": "informado", "data_emissao": "2022-03-30", "data_estimada": true, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "maratona-cyber-defense", "nome": "Maratona Cyber Defense - Primeiros passos contra ciberameaças", "instituicao": "IDESP / Daryus", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 8, "carga_horaria_status": "informado", "data_emissao": "2022-03-25", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "8 CPE."}, {"id": "igti-dev-summit-speaker", "nome": "Speaker - Dev Summit Speedy: \"Arquitetura de Software: Além das Siglas\"", "instituicao": "IGTI - Instituto de Gestão e Tecnologia da Informação", "categoria": "Palestras, Eventos e Publicações", "tipo": "palestra", "carga_horaria_horas": 8, "carga_horaria_status": "informado", "data_emissao": "2022-02-22", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Evento com 3.000 inscritos e 8 horas de conteúdo."}, {"id": "dsa-big-data-fundamentos", "nome": "Big Data Fundamentos 3.0", "instituicao": "Data Science Academy", "categoria": "Dados e IA", "tipo": "curso", "carga_horaria_horas": 12, "carga_horaria_status": "informado", "data_emissao": "2021-12-17", "data_estimada": false, "validade": null, "credencial_id": "61bc72e6e32fc39bf864ec19", "destaque": false, "observacao": "Aproveitamento de 90%."}, {"id": "aws-partner-security-governance", "nome": "AWS Partner: Security Governance at Scale (Technical)", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-12-14", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Duração informada: 1 dia (presencial)."}, {"id": "hcpa-anais-publicacao-2021", "nome": "Publicação nos Anais: Utilização de Linguagem de Programação no Processamento de Dados em Pesquisa de Saúde", "instituicao": "Clinical and Biomedical Research (HCPA/UFRGS)", "categoria": "Palestras, Eventos e Publicações", "tipo": "publicacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-12-01", "data_estimada": true, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Volume 41, Suplemento, dezembro de 2021. Trabalho nº 2068, categoria Inovação."}, {"id": "conversas-digitais-2021", "nome": "Conversas Digitais Experiences 2021", "instituicao": "Escola de Governo RS", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 1, "carga_horaria_status": "informado", "data_emissao": "2021-11-29", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "hcpa-semana-cientifica-2021", "nome": "Apresentação de e-pôster - 41ª Semana Científica do HCPA", "instituicao": "Hospital de Clínicas de Porto Alegre (HCPA)", "categoria": "Palestras, Eventos e Publicações", "tipo": "palestra", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-11-12", "data_estimada": false, "validade": null, "credencial_id": "0FF4E809", "destaque": false, "observacao": "Trabalho: Utilização de linguagem de programação no processamento de dados em pesquisa de saúde."}, {"id": "aws-cloud-practitioner", "nome": "AWS Certified Cloud Practitioner", "instituicao": "Amazon Web Services (AWS)", "categoria": "Cloud e AWS", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-10-29", "data_estimada": false, "validade": "2027-10-28", "credencial_id": "DKPT8NDD3NEQ123E", "destaque": true, "observacao": "Renovada; validade original era 29/10/2024."}, {"id": "uol-lgpd", "nome": "LGPD - Lei Geral de Proteção de Dados", "instituicao": "UniUOL (PagSeguro)", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-pci-dss", "nome": "PCI-DSS: Normas de Segurança de Dados", "instituicao": "UniUOL (PagSeguro)", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 1, "carga_horaria_status": "informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-trilha-obrigatorios", "nome": "Trilha de Obrigatórios - PagSeguro", "instituicao": "UniUOL (PagSeguro)", "categoria": "Compliance e Governança", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Agrupa os 8 cursos obrigatórios de segurança e compliance listados separadamente."}, {"id": "uol-anticorrupcao", "nome": "Lei Anticorrupção", "instituicao": "UniUOL (PagSeguro)", "categoria": "Compliance e Governança", "tipo": "curso", "carga_horaria_horas": 1, "carga_horaria_status": "informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-pld-ft", "nome": "Prevenção à Lavagem de Dinheiro e ao Financiamento do Terrorismo", "instituicao": "UniUOL (PagSeguro)", "categoria": "Compliance e Governança", "tipo": "curso", "carga_horaria_horas": 1, "carga_horaria_status": "informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-risco-operacional", "nome": "Risco Operacional, Controles Internos e Compliance", "instituicao": "UniUOL (PagSeguro)", "categoria": "Compliance e Governança", "tipo": "curso", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-pcn", "nome": "PCN - Plano de Continuidade de Negócios", "instituicao": "UniUOL (PagSeguro)", "categoria": "Compliance e Governança", "tipo": "curso", "carga_horaria_horas": 0.5, "carga_horaria_status": "informado", "data_emissao": "2021-09-09", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-seguranca-informacao", "nome": "Segurança da Informação", "instituicao": "UniUOL (PagSeguro)", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 1.5, "carga_horaria_status": "informado", "data_emissao": "2021-09-08", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "uol-phishing", "nome": "Phishing", "instituicao": "UniUOL (PagSeguro)", "categoria": "Segurança da Informação", "tipo": "curso", "carga_horaria_horas": 0.25, "carga_horaria_status": "informado", "data_emissao": "2021-09-08", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "tdc-2021-transformation", "nome": "TDC 2021 Transformation (Trilha Gestão de Produtos)", "instituicao": "TDC / Globalcode", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 8, "carga_horaria_status": "informado", "data_emissao": "2021-08-25", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "okrcp-certiprof", "nome": "OKR Certified Professional (OKRCP)", "instituicao": "CertiProf", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-08-04", "data_estimada": false, "validade": "2023-08-31", "credencial_id": "TLLSVZQGHH-HQPMYTST-RPLHJJFJRF", "destaque": true, "observacao": null}, {"id": "okr-guardiao", "nome": "OKR Guardião - Objectives and Key Results Certification", "instituicao": "Instituto Brasil OKR", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": 16, "carga_horaria_status": "informado", "data_emissao": "2021-07-30", "data_estimada": false, "validade": null, "credencial_id": "152362724", "destaque": false, "observacao": null}, {"id": "qulture-gestao-desempenho", "nome": "Gestão de Desempenho e suas Tendências", "instituicao": "Qulture.Rocks", "categoria": "Liderança e Soft Skills", "tipo": "curso", "carga_horaria_horas": 5, "carga_horaria_status": "informado", "data_emissao": "2021-07-19", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "management-30-fundamentals", "nome": "Management 3.0 Fundamentals", "instituicao": "Management 3.0", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-07-17", "data_estimada": false, "validade": null, "credencial_id": "210797756", "destaque": true, "observacao": "Workshop online de 16 e 17/07/2021."}, {"id": "udemy-jira-permissoes", "nome": "JIRA: Permissões e Acessos", "instituicao": "Udemy", "categoria": "Agilidade e Produto", "tipo": "curso", "carga_horaria_horas": 4, "carga_horaria_status": "informado", "data_emissao": "2021-07-15", "data_estimada": false, "validade": null, "credencial_id": "UC-0fd1d619-2ede-483f-bc92-eb21955b556d", "destaque": false, "observacao": null}, {"id": "scrum-day-brazil-2021", "nome": "Scrum Day Brazil 2021", "instituicao": "Scrum Day Brazil", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 10, "carga_horaria_status": "informado", "data_emissao": "2021-07-08", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "introducao-okrs", "nome": "Introdução às OKRs", "instituicao": "Qulture.Rocks", "categoria": "Agilidade e Produto", "tipo": "curso", "carga_horaria_horas": 3, "carga_horaria_status": "informado", "data_emissao": "2021-07-04", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "papo-agil-carreira-kanban", "nome": "Papo Ágil: Carreira Kanban", "instituicao": "Clube do Ágil", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 2, "carga_horaria_status": "informado", "data_emissao": "2021-07-02", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Duração informada: 120 minutos."}, {"id": "agile-leaders-meeting-2021", "nome": "Agile Leaders Meeting", "instituicao": "Agile Leaders Meeting (Doity)", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 9, "carga_horaria_status": "informado", "data_emissao": "2021-07-01", "data_estimada": false, "validade": null, "credencial_id": "9URHH1B1", "destaque": false, "observacao": null}, {"id": "kanban-system-design-kmp1", "nome": "Kanban System Design (KMP I)", "instituicao": "Kanban University", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-06-27", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Turma de 26 e 27/06/2021 com Daniel Rocha."}, {"id": "lean-six-sigma-white-belt", "nome": "Lean Six Sigma White Belt", "instituicao": "MF Treinamentos (Prof. Dr. Marcelo Machado Fernandes)", "categoria": "Gestão de Projetos e Serviços", "tipo": "curso", "carga_horaria_horas": 6, "carga_horaria_status": "informado", "data_emissao": "2021-06-24", "data_estimada": false, "validade": null, "credencial_id": "CLRFNDBPSQ-LGTQZHHQ-XHCYCXCWTM", "destaque": false, "observacao": null}, {"id": "safe-5-agilist", "nome": "Certified SAFe 5 Agilist", "instituicao": "Scaled Agile, Inc.", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2021-06-21", "data_estimada": true, "validade": "2022-06-21", "credencial_id": "29550509-9588", "destaque": true, "observacao": "Data de emissão estimada a partir da validade de 1 ano."}, {"id": "pbb-product-backlog-building", "nome": "Product Backlog Building (PBB)", "instituicao": "Caroli.org", "categoria": "Agilidade e Produto", "tipo": "curso", "carga_horaria_horas": 7, "carga_horaria_status": "informado", "data_emissao": "2021-06-19", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "cac-certified-agile-coach", "nome": "Certified Agile Coach (CAC)", "instituicao": "Massimus", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": 52, "carga_horaria_status": "informado", "data_emissao": "2021-06-16", "data_estimada": false, "validade": null, "credencial_id": "108631904", "destaque": true, "observacao": null}, {"id": "udemy-fast-mba-lead", "nome": "Fast MBA Lead - Liderança e Gestão de Pessoas", "instituicao": "Udemy", "categoria": "Liderança e Soft Skills", "tipo": "curso", "carga_horaria_horas": 7, "carga_horaria_status": "informado", "data_emissao": "2021-06-06", "data_estimada": false, "validade": null, "credencial_id": "UC-5d4281dc-b7fb-46f9-9f5e-ce32f97587ae", "destaque": false, "observacao": null}, {"id": "linkedin-inteligencia-emocional", "nome": "Como Desenvolver sua Inteligência Emocional", "instituicao": "LinkedIn Learning", "categoria": "Liderança e Soft Skills", "tipo": "curso", "carga_horaria_horas": 1.15, "carga_horaria_status": "informado", "data_emissao": "2021-06-02", "data_estimada": false, "validade": null, "credencial_id": "Ae2bd5KHut-HpJ6yyJ6CMoXejA-5", "destaque": false, "observacao": "Duração informada: 1h09min."}, {"id": "lean-inception-clf", "nome": "Certified Lean Inception Facilitator (CLF)", "instituicao": "Caroli.org", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": 9, "carga_horaria_status": "informado", "data_emissao": "2021-05-20", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": null}, {"id": "cspo-scrum-alliance", "nome": "Certified Scrum Product Owner (CSPO)", "instituicao": "Scrum Alliance / Massimus", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": 16, "carga_horaria_status": "informado", "data_emissao": "2021-05-17", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": null}, {"id": "graduacao-ads-estacio", "nome": "Tecnólogo em Análise e Desenvolvimento de Sistemas", "instituicao": "Universidade Estácio de Sá", "categoria": "Formação Acadêmica", "tipo": "formacao_academica", "carga_horaria_horas": 2684, "carga_horaria_status": "informado", "data_emissao": "2021-03-24", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Carga horária cumprida conforme histórico escolar (o diploma não informa). Colação de grau em 24/03/2021."}, {"id": "tdc-sp-2019-palestrante", "nome": "Palestrante - The Developer's Conference São Paulo (Trilha iOS)", "instituicao": "TDC / Globalcode", "categoria": "Palestras, Eventos e Publicações", "tipo": "palestra", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2019-07-18", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": null}, {"id": "udemy-visual-swift-memory", "nome": "Visual Swift Memory Mastery", "instituicao": "Udemy", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 1.5, "carga_horaria_status": "informado", "data_emissao": "2019-04-17", "data_estimada": false, "validade": null, "credencial_id": "UC-V6FC7L48", "destaque": false, "observacao": null}, {"id": "tdc-poa-2018-trilha-ios", "nome": "The Developer's Conference Porto Alegre (Trilha iOS)", "instituicao": "TDC / Globalcode", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 8, "carga_horaria_status": "informado", "data_emissao": "2018-12-08", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "tdc-poa-2018-palestrante", "nome": "Palestrante - The Developer's Conference Porto Alegre", "instituicao": "TDC / Globalcode", "categoria": "Palestras, Eventos e Publicações", "tipo": "palestra", "carga_horaria_horas": 8, "carga_horaria_status": "informado", "data_emissao": "2018-12-03", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": null}, {"id": "apple-developer-academy-ios-foundations", "nome": "Apple Developer Academy - iOS Foundations", "instituicao": "Apple Developer Academy (PUCRS / Instituto Eldorado)", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 120, "carga_horaria_status": "informado", "data_emissao": "2018-07-13", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": true, "observacao": "Programa de 04/06 a 13/07/2018."}, {"id": "google-io-extended-2018", "nome": "Google I/O Extended 2018 - Porto Alegre", "instituicao": "Hone IT", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": null, "carga_horaria_status": "nao_informado", "data_emissao": "2018-06-02", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": "Evento das 9h às 18h (horário, não carga horária declarada)."}, {"id": "eldorado-logica-oo-swift", "nome": "Conceitos e Fundamentos: Lógica de Programação, Orientação a Objetos e Swift", "instituicao": "Instituto de Pesquisas Eldorado", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 50, "carga_horaria_status": "informado", "data_emissao": "2018-05-18", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "udemy-docker", "nome": "Docker: Ferramenta Essencial para Desenvolvedores", "instituicao": "Udemy", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 5.5, "carga_horaria_status": "informado", "data_emissao": "2018-03-29", "data_estimada": false, "validade": null, "credencial_id": "UC-479YPQ5Z", "destaque": false, "observacao": null}, {"id": "udemy-fastlane-bitrise", "nome": "Automate Your React Native Releases with Fastlane & Bitrise", "instituicao": "Udemy", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 2.5, "carga_horaria_status": "informado", "data_emissao": "2018-03-02", "data_estimada": false, "validade": null, "credencial_id": "UC-T2A49DCI", "destaque": false, "observacao": null}, {"id": "udemy-mvvm-swift", "nome": "MVVM Design Pattern Using Swift in iOS", "instituicao": "Udemy", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 3, "carga_horaria_status": "informado", "data_emissao": "2018-03-01", "data_estimada": false, "validade": null, "credencial_id": "UC-5JJ24PVR", "destaque": false, "observacao": null}, {"id": "udemy-golang", "nome": "Go (Golang): Explorando a Linguagem do Google", "instituicao": "Udemy", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 11.5, "carga_horaria_status": "informado", "data_emissao": "2018-01-08", "data_estimada": false, "validade": null, "credencial_id": "UC-6DW8T0BP", "destaque": false, "observacao": null}, {"id": "game-experience-brazil-2016", "nome": "Game Experience Brazil 2016", "instituicao": "Centro de Inovação Microsoft (MIC Curitiba)", "categoria": "Palestras, Eventos e Publicações", "tipo": "evento", "carga_horaria_horas": 3, "carga_horaria_status": "informado", "data_emissao": "2016-03-30", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "mobgeek-swift-4-semanas", "nome": "Swift em 4 Semanas", "instituicao": "MobGeek", "categoria": "Desenvolvimento e Mobile", "tipo": "curso", "carga_horaria_horas": 25, "carga_horaria_status": "informado", "data_emissao": "2014-11-18", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "workshop-implantacao-scrum", "nome": "Workshop de Implantação do Scrum em Organizações", "instituicao": "Massimus", "categoria": "Agilidade e Produto", "tipo": "curso", "carga_horaria_horas": 4, "carga_horaria_status": "informado", "data_emissao": "2011-09-28", "data_estimada": false, "validade": null, "credencial_id": null, "destaque": false, "observacao": null}, {"id": "csm-scrum-alliance", "nome": "Certified ScrumMaster (CSM)", "instituicao": "Scrum Alliance / Massimus", "categoria": "Agilidade e Produto", "tipo": "certificacao", "carga_horaria_horas": 16, "carga_horaria_status": "informado", "data_emissao": "2011-09-27", "data_estimada": false, "validade": "2023-05-18", "credencial_id": "000159077", "destaque": true, "observacao": "Treinamento de 16h com Heitor Roriz Filho (CST) em Porto Alegre."}]}, "ordemTipo": ["formacao_academica", "certificacao", "curso", "palestra", "publicacao", "evento"], "rotuloTipo": {"formacao_academica": "Formação acadêmica", "certificacao": "Certificação", "curso": "Curso", "palestra": "Palestra", "publicacao": "Publicação", "evento": "Evento"}, "publico": true};
+const certs = dados.certificados;
+const resumo = dados.resumo;
+const hoje = new Date().toISOString().slice(0, 10);
+const fmt = (n, casas = 0) => Number(n).toLocaleString("pt-BR", { maximumFractionDigits: casas });
+const fmtData = (d, estimada) => {
+  if (!d) return "Sem data";
+  const [a, m, dia] = d.split("-");
+  return estimada ? a : `${dia}/${m}/${a}`;
+};
+
+function el(tag, props = {}, filhos = []) {
+  const no = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (v == null || v === false) continue;
+    if (k === "class") no.className = v;
+    else if (k === "text") no.textContent = v;
+    else if (k === "style") Object.assign(no.style, v);
+    else if (k.startsWith("on")) no.addEventListener(k.slice(2), v);
+    else no.setAttribute(k, v);
+  }
+  for (const f of [].concat(filhos)) if (f) no.append(f);
+  return no;
+}
+const preencher = (id, filhos) => document.getElementById(id).replaceChildren(...filhos);
+
+function chipValidade(c) {
+  if (!c.validade) return c.tipo === "certificacao" ? el("span", { class: "chip ok", text: "Sem expiração" }) : null;
+  return c.validade >= hoje
+    ? el("span", { class: "chip ok", text: `Válida até ${fmtData(c.validade)}` })
+    : el("span", { class: "chip exp", text: `Expirou em ${fmtData(c.validade)}` });
+}
+function chipHoras(c) {
+  return c.carga_horaria_horas != null
+    ? el("span", { class: "chip horas", text: `${fmt(c.carga_horaria_horas, 2)} h` })
+    : el("span", { class: "chip neutro", text: "Carga horária não informada" });
+}
+
+async function copiar(texto, botao) {
+  try { await navigator.clipboard.writeText(texto); }
+  catch {
+    const t = el("textarea"); t.value = texto; document.body.append(t); t.select(); document.execCommand("copy"); t.remove();
+  }
+  botao.textContent = "Copiado";
+  setTimeout(() => (botao.textContent = "Copiar caminho"), 1500);
+}
+function linhaCaminho(caminho, url) {
+  const botao = el("button", { class: "btn-copiar", type: "button", text: "Copiar caminho" });
+  botao.addEventListener("click", () => copiar(caminho, botao));
+  return el("div", { class: "caminho" }, [el("a", { href: url, target: "_blank", title: "Abrir arquivo", text: caminho }), botao]);
+}
+
+function renderBigNumbers() {
+  const anos = Number(resumo.periodo.fim) - Number(resumo.periodo.inicio) + 1;
+  const cards = [
+    { cls: "principal", valor: fmt(resumo.horas_informadas_total), rotulo: "horas de formação comprovadas",
+      detalhe: `${fmt(resumo.horas_formacao_academica)} h acadêmicas + ${fmt(resumo.horas_cursos_eventos, 1)} h em cursos e eventos` },
+    { valor: resumo.total, rotulo: "certificados", detalhe: `${resumo.itens_sem_carga_horaria} sem carga horária declarada` },
+    { valor: resumo.certificacoes, rotulo: "certificações profissionais", detalhe: `${resumo.certificacoes_vigentes} vigentes ou sem expiração` },
+    { valor: resumo.formacoes_academicas, rotulo: "formações acadêmicas", detalhe: "Graduação + 2 MBAs" },
+    { valor: resumo.instituicoes_distintas, rotulo: "instituições", detalhe: "AWS, PMI, Scrum Alliance, PUCRS..." },
+    { valor: resumo.palestras_publicacoes, rotulo: "palestras e publicações", detalhe: "TDC, IGTI, HCPA" },
+    { valor: anos, rotulo: "anos de aprendizado contínuo", detalhe: `${resumo.periodo.inicio} a ${resumo.periodo.fim}` },
+  ];
+  preencher("big-numbers", cards.map((c) => el("div", { class: `bn ${c.cls || ""}` }, [
+    el("div", { class: "valor", text: String(c.valor) }),
+    el("div", { class: "rotulo", text: c.rotulo }),
+    el("div", { class: "detalhe", text: c.detalhe }),
+  ])));
+}
+
+function renderDestaques() {
+  const lista = certs.filter((c) => c.destaque).sort((a, b) =>
+    ordemTipo.indexOf(a.tipo) - ordemTipo.indexOf(b.tipo) || (b.data_emissao || "").localeCompare(a.data_emissao || ""));
+  preencher("lista-destaques", lista.map((c) => el("article", { class: "card-dest" }, [
+    el("span", { class: "chip marca", text: rotuloTipo[c.tipo] }),
+    el("div", { class: "nome", text: c.nome }),
+    el("div", { class: "inst", text: `${c.instituicao} · ${fmtData(c.data_emissao, c.data_estimada)}` }),
+    el("div", { class: "meta" }, [c.carga_horaria_horas != null ? chipHoras(c) : null, chipValidade(c)]),
+  ])));
+}
+
+function renderDistribuicao() {
+  const cats = Object.entries(resumo.por_categoria);
+  const max = Math.max(...cats.map(([, v]) => v.quantidade));
+  preencher("barras-categoria", cats.map(([nome, v]) => el("div", {
+    class: "barra-linha", title: `Filtrar por ${nome}`,
+    onclick: () => {
+      document.getElementById("filtroCategoria").value = nome;
+      renderLista();
+      document.getElementById("todos").scrollIntoView({ behavior: "smooth" });
+    },
+  }, [
+    el("div", { text: nome }),
+    el("div", { class: "trilho" }, el("div", { class: "preenchimento", style: { width: `${(v.quantidade / max) * 100}%` } })),
+    el("div", { class: "num", text: `${v.quantidade} · ${fmt(v.horas, 1)} h` }),
+  ])));
+
+  const anos = Object.entries(resumo.por_ano);
+  const maxAno = Math.max(...anos.map(([, q]) => q));
+  preencher("timeline", anos.map(([ano, q]) => el("div", { class: "ano" }, [
+    el("div", { class: "col", style: { height: `${(q / maxAno) * 150}px` } }, el("span", { text: String(q) })),
+    el("div", { class: "lbl", text: ano }),
+  ])));
+}
+
+function renderFiltros() {
+  const selCat = document.getElementById("filtroCategoria");
+  Object.keys(resumo.por_categoria).forEach((c) => selCat.append(el("option", { value: c, text: c })));
+  const selTipo = document.getElementById("filtroTipo");
+  ordemTipo.filter((t) => resumo.por_tipo[t]).forEach((t) =>
+    selTipo.append(el("option", { value: t, text: `${rotuloTipo[t]} (${resumo.por_tipo[t]})` })));
+  ["busca", "filtroCategoria", "filtroTipo", "ordem"].forEach((id) =>
+    document.getElementById(id).addEventListener("input", renderLista));
+}
+
+function itemLista(c) {
+  const alternativos = !publico && c.arquivos_alternativos.length
+    ? el("details", {}, [
+        el("summary", { text: `${c.arquivos_alternativos.length} cópia(s) ou arquivo(s) relacionado(s)` }),
+        ...c.arquivos_alternativos.map((a, i) => linhaCaminho(a, c.urls_alternativas[i])),
+      ])
+    : null;
+  return el("article", { class: "item", id: c.id }, [
+    el("div", { class: "item-topo" }, [
+      el("div", {}, [el("div", { class: "nome", text: c.nome }), el("div", { class: "inst", text: c.instituicao })]),
+      el("div", { class: "inst", text: fmtData(c.data_emissao, c.data_estimada) + (c.data_estimada ? " (estimada)" : "") }),
+    ]),
+    el("div", { class: "chips" }, [
+      el("span", { class: "chip marca", text: c.categoria }),
+      el("span", { class: "chip neutro", text: rotuloTipo[c.tipo] }),
+      chipHoras(c),
+      chipValidade(c),
+      c.credencial_id ? el("span", { class: "chip neutro", text: `ID ${c.credencial_id}` }) : null,
+    ]),
+    c.observacao ? el("div", { class: "obs", text: c.observacao }) : null,
+    publico ? null : linhaCaminho(c.arquivo_principal, c.url),
+    alternativos,
+  ]);
+}
+
+function renderLista() {
+  const termo = document.getElementById("busca").value.trim().toLowerCase();
+  const cat = document.getElementById("filtroCategoria").value;
+  const tipo = document.getElementById("filtroTipo").value;
+  const ordem = document.getElementById("ordem").value;
+  const lista = certs.filter((c) =>
+    (!cat || c.categoria === cat) && (!tipo || c.tipo === tipo) &&
+    (!termo || [c.nome, c.instituicao, c.credencial_id, c.categoria].join(" ").toLowerCase().includes(termo)));
+  if (ordem === "horas") lista.sort((a, b) => (b.carga_horaria_horas ?? -1) - (a.carga_horaria_horas ?? -1));
+  else if (ordem === "nome") lista.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+  else lista.sort((a, b) => (b.data_emissao || "").localeCompare(a.data_emissao || ""));
+
+  const horas = lista.reduce((s, c) => s + (c.carga_horaria_horas || 0), 0);
+  document.getElementById("contador").textContent = `${lista.length} de ${certs.length} itens · ${fmt(horas, 1)} h informadas`;
+  preencher("lista", lista.map(itemLista));
+}
+
+const raiz = document.documentElement;
+const aplicarTema = (tema) => {
+  if (tema === "dark") raiz.dataset.theme = "dark"; else delete raiz.dataset.theme;
+  document.getElementById("btnTema").textContent = tema === "dark" ? "Tema claro" : "Tema escuro";
+};
+aplicarTema(localStorage.getItem("tema") || "dark");
+document.getElementById("btnTema").addEventListener("click", () => {
+  const novo = raiz.dataset.theme === "dark" ? "light" : "dark";
+  aplicarTema(novo);
+  localStorage.setItem("tema", novo);
+});
+
+renderBigNumbers();
+renderDestaques();
+renderDistribuicao();
+renderFiltros();
+renderLista();
+preencher("rodape", publico
+  ? [`Atualizado em ${fmtData(dados.gerado_em)}.`]
+  : [`Gerado em ${fmtData(dados.gerado_em)} a partir de `, el("code", { text: "certificados.json" }),
+     ". Pasta raiz: ", el("code", { text: dados.raiz })]);
+</script>
+</body>
+</html>
